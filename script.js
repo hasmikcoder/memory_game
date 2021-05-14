@@ -53,17 +53,35 @@ document.addEventListener('DOMContentLoaded', () =>{
   ]
 
 const grid = document.querySelector('.grid');
-  
+ var cardsChosen = []
+ var cardsChosen = []
+
 //creating board
 //using a for loop to loop over the card array and for each card creating an image element
 
 function createBoard(){
-for (let i = 0; i< cardArray.length; i++) {
+   for (let i = 0; i< cardArray.length; i++) {
    const card = document.createElement('img')
    card.setAttribute('src', 'images/blank.png')
    card.setAttribute('data-id', i)
    //card.addEventListener('click', flipCard)
    grid.appendChild(card)
+ }
+}
+
+//check for matches
+
+
+
+
+//flip your card
+function flipCard() {
+ var cardId = this.getAttribute('data-id')
+ cardsChosen.push(cardArray[cardId].name)
+ cardsChosenId.push(cardId)
+ this.setAttribute('src', cardArray[cardId].img)
+ if (cardsChosen.length === 2) {
+ setTimeout(checkForMatch, 500)
  }
 }
 
