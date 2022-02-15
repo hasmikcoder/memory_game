@@ -85,7 +85,7 @@ const optionTwoId =cardsChosenId[1]
     cardsWon.push(cardsChosen)
 } else {
    cards[optionOneId].setAttribute('src', 'images/blank.png')
-   cards[optionTwoId].setAttribute('src', images/blank.png)
+   cards[optionTwoId].setAttribute('src', 'images/blank.png')
    alert('Sorry, try again!')
   }
    cardsChosen = []
@@ -99,13 +99,15 @@ const optionTwoId =cardsChosenId[1]
 
 //flip your card
 function flipCard() {
- var cardId = this.getAttribute('data-id')
- cardsChosen.push(cardArray[cardId].name)
- cardsChosenId.push(cardId)
- this.setAttribute('src', cardArray[cardId].img)
- if (cardsChosen.length === 2) {
- setTimeout(checkForMatch, 500)
- }
+  if(cardsChosen.length < 2) {
+    var cardId = this.getAttribute('data-id')
+    cardsChosen.push(cardArray[cardId].name)
+    cardsChosenId.push(cardId)
+    this.setAttribute('src', cardArray[cardId].img)
+    if (cardsChosen.length === 2) {
+    setTimeout(checkForMatch, 500)
+    }
+  }
 }
 
 createBoard()
